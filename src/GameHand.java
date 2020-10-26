@@ -59,8 +59,12 @@ public class GameHand {
     }
 
     public boolean changeAceValue() {
+        int value = 0;
+        for (Card card : hand) {
+            value += card.value();
+        }
         boolean returnValue = false;
-        if(hasAce() && handValue() < 12){
+        if(hasAce() && value < 12){
             returnValue = true;
         }
         return returnValue;
