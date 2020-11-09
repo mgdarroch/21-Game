@@ -168,7 +168,8 @@ public class Client {
                 if (Integer.parseInt(serverMessageComponents[3]) == model.getPlayerID()) {
                     model.getPlayerHandPanelByID(Integer.parseInt(serverMessageComponents[3])).addCard(model.getCardImage(serverMessageComponents[4]));
                 } else {
-                    model.getPlayerHandPanelByID(Integer.parseInt(serverMessageComponents[3])).addCard(model.getCardImage(serverMessageComponents[4]));
+                    // CHANGE THIS TO WHAT IS ABOVE TO SEE ALL PLAYERS CARDS
+                    model.getPlayerHandPanelByID(Integer.parseInt(serverMessageComponents[3])).addCard(model.getCardImage("back"));
                 }
 
                 getServerMessage();
