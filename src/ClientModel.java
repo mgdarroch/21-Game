@@ -105,6 +105,14 @@ public class ClientModel {
         playerHandPanels.clear();
     }
 
+    public void clearOthers(){
+        for (HandPanel handPanel: playerHandPanels) {
+            if(handPanel instanceof OtherPlayerHandPanel){
+                ((OtherPlayerHandPanel) handPanel).clearCardPanel();
+            }
+        }
+    }
+
     public void quitGame() {
         sendClientMessage("CLIENTMESSAGE--QUITGAME");
         try {

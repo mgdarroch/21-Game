@@ -78,6 +78,11 @@ public class OtherPlayerHandPanel extends JPanel implements HandPanel {
         showChanges();
     }
 
+    public void clearCardPanel(){
+        cardsPanel.removeAll();
+        showChanges();
+    }
+
     @Override
     public void setHandValueLabel(String handValue) {
     }

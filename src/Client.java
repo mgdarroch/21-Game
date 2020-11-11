@@ -176,7 +176,9 @@ public class Client {
                 break;
 
             case "NEWPLAYERCARDREVEALED":
-                model.getPlayerHandPanelByID(Integer.parseInt(serverMessageComponents[3])).addCard(model.getCardImage(serverMessageComponents[4]));
+                if(!(Integer.parseInt(serverMessageComponents[3]) == model.getPlayerID())) {
+                    model.getPlayerHandPanelByID(Integer.parseInt(serverMessageComponents[3])).addCard(model.getCardImage(serverMessageComponents[4]));
+                }
                 getServerMessage();
                 break;
 
@@ -200,6 +202,7 @@ public class Client {
 
             case "SENDRESULT":
                 view.setTurnWaiting(false);
+                model.clearOthers();
                 getServerMessage();
                 break;
 

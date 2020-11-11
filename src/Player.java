@@ -255,6 +255,12 @@ public class Player implements Runnable {
 
     private void sendResult(GameHand hand) {
         output.println("SERVERMESSAGE--HANDVALUE--" + PlayerID + "--" + hand.handValue());
+        for (Player player : game.getPlayerList()) {
+            for (int i = 0; i < player.thisPlayerHand.size(); i++) {
+                output.println("SERVERMESSAGE--NEWPLAYERCARDREVEALED--0--" + player.getPlayerID() + "--" + player.getThisPlayerHand().getCard(i));
+            }
+        }
+
         if (!playersHaveTwentyOne && !dealerHasTwentyOne) {
 
             if (isDealer()) {
