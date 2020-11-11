@@ -56,9 +56,14 @@ public class Game implements Runnable {
      */
 
     private void pickRandomDealer() {
-        int randomNum = new Random().nextInt(numPlayers());
-        System.out.println("Random number is: " + randomNum);
-        playerList.get(randomNum).setDealer(true);
+        int randomNum;
+        try {
+            randomNum = new Random().nextInt(numPlayers());
+            System.out.println("Random number is: " + randomNum);
+            playerList.get(randomNum).setDealer(true);
+        } catch (IllegalArgumentException e){
+            System.out.println("Random number bound = " + numPlayers());
+        }
     }
 
     public void dealerChange() {
@@ -85,6 +90,7 @@ public class Game implements Runnable {
         do {
             playTwentyOne();
         } while (numPlayers() > 1);
+        System.exit(0);
     }
 
 
@@ -312,9 +318,9 @@ public class Game implements Runnable {
 
     //Method does not work.
 
-    public void removePlayerByID(int playerCount) {
+    public void removePlayerByID(int playerID) {
         for (Player player : playerList) {
-            if (player.getPlayerID() == playerCount) {
+            if (player.getPlayerID() == playerID) {
                 removePlayer(player);
             }
         }

@@ -36,7 +36,15 @@ public class Server {
     }
 
     public void start() {
-        System.out.println("Starting server\nServer port: " + serverPort + "\nPlayers per table: " + playersPerTable + "\nStarting money: " + startingStakes + "\nMinimum bet: " + minimumWager + "\nNumber of decks: " + numberOfDecks);
+        System.out.println(
+                "Starting server\nServer port: "
+                        + serverPort + "\nPlayers per table: "
+                        + playersPerTable + "\nStarting money: "
+                        + startingStakes + "\nMinimum bet: "
+                        + minimumWager + "\nNumber of decks: "
+                        + numberOfDecks
+        );
+
         ServerSocket serverSocket = null;
         try {
             System.out.println("Creating server socket");
@@ -51,6 +59,7 @@ public class Server {
             //Creates a Game object and adds it to its own thread.
             Game game = new Game(minimumWager, numberOfDecks, startingStakes, playersPerTable);
             Thread gameThread = new Thread(game);
+            gameThread.setName("GameThread");
             for (int i = 0; i < playersPerTable; i++) {
                 // Allows the specified number of connections.
                 try {
