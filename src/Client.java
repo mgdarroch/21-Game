@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.net.SocketException;
 import java.util.concurrent.ExecutionException;
 
 public class Client {
@@ -255,6 +256,10 @@ public class Client {
                         getServerMessage();
                         break;
                     case "CONTINUE":
+                        if(Integer.parseInt(serverMessageComponents[3]) == 1){
+                            // Last Player Standing
+                            model.quitGame();
+                        }
                         view.reset();
                         model.reset();
                         view.showContinuePlayingPanel();

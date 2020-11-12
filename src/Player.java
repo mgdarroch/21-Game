@@ -55,7 +55,7 @@ public class Player implements Runnable {
         do {
             playTwentyOne();
         } while (continuePlaying);
-        output.println("SERVERMESSAGE--GAMEOVER--" + stakes);
+        output.println("SERVERMESSAGE--GAMEOVER--" + stakes + "--" + game.getPlayerList().size());
     }
 
     /**
@@ -136,7 +136,7 @@ public class Player implements Runnable {
 
         output.println("SERVERMESSAGE--HANDVALUE--" + PlayerID + "--" + thisPlayerHand.handValue());
 
-        if (thisPlayerHand.handValue() == TWENTY_ONE && game.getDealer().getThisPlayerHand().handValue() == TWENTY_ONE) {
+        if (thisPlayerHand.handValue() == TWENTY_ONE && game.getDealer().getThisPlayerHand().handValue() == TWENTY_ONE && getPlayerID() != game.getDealer().getPlayerID()) {
             output.println("SERVERMESSAGE--TWENTYONE--PLAYERANDDEALER");
             naturalTwentyOne = true;
 
@@ -385,7 +385,7 @@ public class Player implements Runnable {
             } while (!receivedChoice);
             if (choice.equals("Yes")) {
                 continuePlaying = true;
-                output.println("SERVERMESSAGE--CONTINUEPLAYINGRESPONSE--CONTINUE");
+                output.println("SERVERMESSAGE--CONTINUEPLAYINGRESPONSE--CONTINUE--" + game.getPlayerList().size());
             } else {
                 game.removePlayer(this);
             }

@@ -7,7 +7,7 @@ import java.net.SocketException;
 
 public class Server {
     private static final int DEFAULT_PORT = 8888;
-    private static final int DEFAULT_PLAYERS_PER_TABLE = 4;
+    private static final int DEFAULT_PLAYERS_PER_TABLE = 2;
     private static final int DEFAULT_STARTING_MONEY = 12;
     private static final int DEFAULT_MINIMUM_BET = 1;
     private static final int DEFAULT_NUMBER_OF_DECKS = 6;

@@ -90,6 +90,7 @@ public class Game implements Runnable {
         do {
             playTwentyOne();
         } while (numPlayers() > 1);
+        System.out.println("Player " + playerList.get(0).getPlayerID() + " has won the game!");
         System.exit(0);
     }
 
